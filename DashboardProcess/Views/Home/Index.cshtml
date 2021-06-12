@@ -1,8 +1,21 @@
-﻿@{
-    var pings = new List<Int32>()
+﻿@using DashboardProcess.Services;
+@using System.Threading;
+
+@{
+    var rounds = 1;
+
+    var values = new List<ResultPing>();
+
+
+    // ops its a bad idea...
+    // issue for future's Biu
+    while (true)
     {
-        20000, 10000, 20000, 10000, 20000, 10000, 20000, 10000, 20000, 50000, 20000, 10000, 20000, 10000, 20000, 10000, 20000, 10000, 20000, 50000
-    };
+        Thread.Sleep(1000);
+        new ProcessService().PingAddres(rounds, "192.168.0.1");
+        rounds ++;
+        Console.WriteLine(values.ToList().ToString());
+    }
 
     ViewData["Title"] = "Home Page";
 }
